@@ -50,7 +50,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh run download "${{ github.event.workflow_run.id }}" -n "jellyfin-org__build" -D build
+          gh run download "${{ github.event.workflow_run.id }}" --repo "${GITHUB_REPOSITORY}" -n "jellyfin-org__build" -D build
           echo "artifact-path=build" >> "${GITHUB_OUTPUT}"
 
   deploy:
