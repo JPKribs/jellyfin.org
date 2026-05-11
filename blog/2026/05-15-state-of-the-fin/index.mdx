@@ -1,0 +1,260 @@
+---
+title: State of the Fin 2026-05-15
+authors:
+  - jellyfin
+slug: state-of-the-fin-2026-05-15
+tags: [state-of-the-fin]
+---
+
+Welcome to the second edition of State of the Fin! This update will be slightly different to the previous one as we don't have as many large updates to announce (yet)! Still, we want to keep you informed on what is happening and what the Jellyfin development team are working on. Please enjoy, and contribute through our [standard channels](https://jellyfin.org/contact/) if you have questions or comments.
+
+{/* truncate */}
+
+## Project Updates
+
+#### Versioning
+
+As mentioned in the last [State of the Fin](https://jellyfin.org/posts/state-of-the-fin-2026-01-06/#versioning), we're dropping the major version "10" from our naming scheme. With 10.11.x being the final release branch to use it, the next major release will move directly to 12.0.
+
+#### LLM/"AI" Policy
+
+As with pretty much every open source project, we have been inundated with AI-authored pull requests of varying quality. This has vastly increased the amount of work the team has on their plate. To that end, an LLM/AI Policy has been created to try and help set standards. The tl;dr is **AI use isn't completely forbidden in pull requests/code submissions, however you must understand HOW it does what it does, and any posts to a pull request/issue should be written by the user. You cannot function as a go-between between your AI and our questions/comments, just copy-pasting whatever the AI tells you.** For more information, please read the [LLM/"AI" developmental policy](https://jellyfin.org/docs/general/contributing/llm-policies/) we have published.
+
+The Jellyfin Team is made up of a lot of different people, and everyone has different levels of acceptance of/interest in code that an AI agent has contributed to. This policy has been made to try and help find a path that everyone can at least appreciate, even if they don't fully agree.
+
+You may also see AI agents committing to projects that are run by the Jellyfin development team. These are not "AI slop" commits. The development team may be experimenting with (or fully using) an agent to help handle some of the tasks involved with writing and managing a large project like this, but the author (not the AI one) is experienced enough with the code to find the stuff the agent does wrong and fix it. That's why they're on the development team.
+
+#### Burnout / Remember the Person
+
+Jellyfin has been growing quickly as the landscape around us matures and changes. This is both a blessing and a curse. It is great that Jellyfin is so popular and loved by so many, however the increased support requests, combined with the AI code submissions, have led to burnout at various levels of the development and admin team. Abuse from users when something isn't working only increases the loss of motivation. This has already led to delays in client and server improvements.
+
+Please remember Jellyfin is open source and is written by volunteers. There are real people doing the work, and they're doing this for the love of the project. Yelling at them/insulting them will not make anything happen faster, and is actually more likely to delay fixes or improvements.
+
+If you'd like to get involved in helping fellow users, hang out in the [standard matrix/discord channels](https://jellyfin.org/contact/), or look at the [forums](https://forum.jellyfin.org/)/[subreddit](https://reddit.com/r/jellyfin) and volunteer answers when you think the question is something you know. Straight AI searching and copy-paste answering aren't good responses, but if it's something you have dealt with, please contribute! The more people who help answer the easy questions, the more we can allow the devs to work on the hard stuff.
+
+## Development Updates
+
+<svg viewBox="0 0 720 330" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Activity by month"><defs><linearGradient id="sotf-activity-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#AA5CC3"/><stop offset="100%" stopColor="#00A4DC"/></linearGradient></defs><path d="M0.75,10.75 A10.0,10.0 0 0 1 10.75,0.75 L709.25,0.75 A10.0,10.0 0 0 1 719.25,10.75 L719.25,40.00 L0.75,40.00 Z" fill="url(#sotf-activity-grad)"/><text x="360.0" y="26.0" textAnchor="middle" fontSize="17" fontWeight="700" fontFamily="Plus Jakarta Sans, system-ui, -apple-system, Segoe UI, sans-serif" fill="#ffffff">Activity by Month</text><rect x="0.75" y="0.75" width="718.5" height="328.5" rx="10" ry="10" fill="none" stroke="url(#sotf-activity-grad)" strokeWidth="1.5"/><line x1="56" y1="270.0" x2="660" y2="270.0" stroke="currentColor" strokeWidth="0.5" opacity="0.15"/><text x="48" y="274.0" textAnchor="end" fontSize="10" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">0</text><line x1="56" y1="220.0" x2="660" y2="220.0" stroke="currentColor" strokeWidth="0.5" opacity="0.15"/><text x="48" y="224.0" textAnchor="end" fontSize="10" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">150</text><line x1="56" y1="170.0" x2="660" y2="170.0" stroke="currentColor" strokeWidth="0.5" opacity="0.15"/><text x="48" y="174.0" textAnchor="end" fontSize="10" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">300</text><line x1="56" y1="120.0" x2="660" y2="120.0" stroke="currentColor" strokeWidth="0.5" opacity="0.15"/><text x="48" y="124.0" textAnchor="end" fontSize="10" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">450</text><line x1="56" y1="70.0" x2="660" y2="70.0" stroke="currentColor" strokeWidth="0.5" opacity="0.15"/><text x="48" y="74.0" textAnchor="end" fontSize="10" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">600</text><text x="56.0" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">May</text><text x="110.9" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Jun</text><text x="165.8" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Jul</text><text x="220.7" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Aug</text><text x="275.6" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Sep</text><text x="330.5" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Oct</text><text x="385.5" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Nov</text><text x="440.4" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Dec</text><text x="495.3" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Jan</text><text x="550.2" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Feb</text><text x="605.1" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Mar</text><text x="660.0" y="288.0" textAnchor="middle" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.7">Apr</text><polyline points="56.0,155.7 110.9,143.7 165.8,184.7 220.7,172.7 275.6,155.3 330.5,125.3 385.5,179.7 440.4,131.0 495.3,176.7 550.2,209.3 605.1,148.7 660.0,157.0" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"/><circle cx="56.0" cy="155.7" r="3" fill="#22c55e"><title>May: 343 prs merged</title></circle><circle cx="110.9" cy="143.7" r="3" fill="#22c55e"><title>Jun: 379 prs merged</title></circle><circle cx="165.8" cy="184.7" r="3" fill="#22c55e"><title>Jul: 256 prs merged</title></circle><circle cx="220.7" cy="172.7" r="3" fill="#22c55e"><title>Aug: 292 prs merged</title></circle><circle cx="275.6" cy="155.3" r="3" fill="#22c55e"><title>Sep: 344 prs merged</title></circle><circle cx="330.5" cy="125.3" r="3" fill="#22c55e"><title>Oct: 434 prs merged</title></circle><circle cx="385.5" cy="179.7" r="3" fill="#22c55e"><title>Nov: 271 prs merged</title></circle><circle cx="440.4" cy="131.0" r="3" fill="#22c55e"><title>Dec: 417 prs merged</title></circle><circle cx="495.3" cy="176.7" r="3" fill="#22c55e"><title>Jan: 280 prs merged</title></circle><circle cx="550.2" cy="209.3" r="3" fill="#22c55e"><title>Feb: 182 prs merged</title></circle><circle cx="605.1" cy="148.7" r="3" fill="#22c55e"><title>Mar: 364 prs merged</title></circle><circle cx="660.0" cy="157.0" r="3" fill="#22c55e"><title>Apr: 339 prs merged</title></circle><polyline points="56.0,129.7 110.9,123.0 165.8,171.0 220.7,159.7 275.6,137.3 330.5,102.0 385.5,161.3 440.4,105.3 495.3,148.0 550.2,190.7 605.1,110.7 660.0,107.0" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"/><circle cx="56.0" cy="129.7" r="3" fill="#ef4444"><title>May: 421 issues closed</title></circle><circle cx="110.9" cy="123.0" r="3" fill="#ef4444"><title>Jun: 441 issues closed</title></circle><circle cx="165.8" cy="171.0" r="3" fill="#ef4444"><title>Jul: 297 issues closed</title></circle><circle cx="220.7" cy="159.7" r="3" fill="#ef4444"><title>Aug: 331 issues closed</title></circle><circle cx="275.6" cy="137.3" r="3" fill="#ef4444"><title>Sep: 398 issues closed</title></circle><circle cx="330.5" cy="102.0" r="3" fill="#ef4444"><title>Oct: 504 issues closed</title></circle><circle cx="385.5" cy="161.3" r="3" fill="#ef4444"><title>Nov: 326 issues closed</title></circle><circle cx="440.4" cy="105.3" r="3" fill="#ef4444"><title>Dec: 494 issues closed</title></circle><circle cx="495.3" cy="148.0" r="3" fill="#ef4444"><title>Jan: 366 issues closed</title></circle><circle cx="550.2" cy="190.7" r="3" fill="#ef4444"><title>Feb: 238 issues closed</title></circle><circle cx="605.1" cy="110.7" r="3" fill="#ef4444"><title>Mar: 478 issues closed</title></circle><circle cx="660.0" cy="107.0" r="3" fill="#ef4444"><title>Apr: 489 issues closed</title></circle><polyline points="56.0,253.3 110.9,249.7 165.8,254.0 220.7,254.7 275.6,253.3 330.5,249.0 385.5,250.3 440.4,245.0 495.3,249.3 550.2,254.0 605.1,245.7 660.0,246.0" fill="none" stroke="#eab308" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"/><circle cx="56.0" cy="253.3" r="3" fill="#eab308"><title>May: 50 contributors</title></circle><circle cx="110.9" cy="249.7" r="3" fill="#eab308"><title>Jun: 61 contributors</title></circle><circle cx="165.8" cy="254.0" r="3" fill="#eab308"><title>Jul: 48 contributors</title></circle><circle cx="220.7" cy="254.7" r="3" fill="#eab308"><title>Aug: 46 contributors</title></circle><circle cx="275.6" cy="253.3" r="3" fill="#eab308"><title>Sep: 50 contributors</title></circle><circle cx="330.5" cy="249.0" r="3" fill="#eab308"><title>Oct: 63 contributors</title></circle><circle cx="385.5" cy="250.3" r="3" fill="#eab308"><title>Nov: 59 contributors</title></circle><circle cx="440.4" cy="245.0" r="3" fill="#eab308"><title>Dec: 75 contributors</title></circle><circle cx="495.3" cy="249.3" r="3" fill="#eab308"><title>Jan: 62 contributors</title></circle><circle cx="550.2" cy="254.0" r="3" fill="#eab308"><title>Feb: 48 contributors</title></circle><circle cx="605.1" cy="245.7" r="3" fill="#eab308"><title>Mar: 73 contributors</title></circle><circle cx="660.0" cy="246.0" r="3" fill="#eab308"><title>Apr: 72 contributors</title></circle><circle cx="200" cy="316" r="4" fill="#22c55e"/><text x="210" y="320" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.85">PRs Merged</text><circle cx="340" cy="316" r="4" fill="#ef4444"/><text x="350" y="320" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.85">Issues Closed</text><circle cx="480" cy="316" r="4" fill="#eab308"/><text x="490" y="320" fontSize="11" fontFamily="system-ui, -apple-system, Segoe UI, sans-serif" fill="currentColor" opacity="0.85">Contributors</text></svg>
+
+#### What's New
+
+We've continued pushing bug and [security](https://github.com/jellyfin/jellyfin/security/advisories) fixes to the stable release. The upcoming 10.11.9 release is expected to be the final release in that branch, and we're now focused on 12.0, with the first release candidate planned in the coming weeks. A few items still need to be addressed before we can ship RC1: [Jellyfin 12.0](https://github.com/orgs/jellyfin/projects/73)
+
+For those following GitHub, the [Performance PR](https://github.com/jellyfin/jellyfin/pull/16062) has been merged into master and is available for testing in the weekly unstable releases. These are published every Monday, though we may push additional out-of-band builds for a while to support testing. Unstable builds can be accessed via Docker using the "unstable" tag or by selecting the unstable tab on our download page.
+
+This PR addresses a number of slow queries in 10.11.x, particularly for folder-based libraries like home videos & photos, and books. Other areas have also seen improvements, including collections, music libraries, playlists, and homepage load times. For more details, see the PR description.
+
+12.0 also includes a fix for EPG issues with the Schedules Direct API, as well as a fix for errors when restructuring media libraries. Scanner performance will not be addressed in this release; that work is planned for 13.0 and is currently in the early [planning phase](https://github.com/jellyfin/jellyfin-meta/discussions/125).
+
+#### Testing
+
+**Before upgrading to 12.0 for testing, please note the following:**
+
+Please remove all installed repository plugins (anything not built-in) before upgrading. Plugins will likely need time to adapt to the new database changes, so removing them before upgrading and re-adding them afterward for testing is the safest approach.
+
+Official plugins compatible with Jellyfin are available through the unstable plugin repository. To test plugins for 12.0:
+
+- Go to Dashboard -> Plugins -> Manage Repositories
+- Update the Plugin Repository URL to: https://repo.jellyfin.org/files/plugin-unstable/manifest.json
+
+**After migrating:**
+
+- Perform a full library scan to restore alternative versions
+- Run the "Optimize database" scheduled task
+
+If you run into issues, please prefix bug reports with "[12.0]".
+
+As always, back up your database before testing, as there are changes that prevent rolling back without restoring from a backup.
+
+#### Client Development Changes
+
+As mentioned [before](https://jellyfin.org/posts/jellyfin-release-10.11.0#client-development-changes), the API will no longer allow deprecated authorization mechanisms by default, so clients and tooling that haven't already migrated will need to update.
+
+We've also added an option for developers to test their clients with deprecated authorization methods fully disabled. More details on how to authorize and run these tests are available in this [document](https://gist.github.com/nielsvanvelzen/ea047d9028f676185832e51ffaf12a6f).
+
+That said, we've temporarily reverted the [default enforcement](https://github.com/jellyfin/jellyfin/pull/16754) during the testing phase, since some of our official clients are still in the process of completing the transition.
+
+## Client Corner
+
+### [Jellyfin for Android](https://github.com/jellyfin/jellyfin-android)
+
+#### What's New
+
+The mobile Android app stopped working after the recent 10.11.7 server update and was quickly resolved in 10.11.8. To keep the same problem from recurring, the app itself was also patched in the 2.6.4 release.
+
+#### Notable Changes
+
+- New patches in the 2.6.4 release to make sure a similar problem doesn't happen again.
+- The 2.6.4 build is not available on the Google Play store for technical reasons.
+
+#### What's Next
+
+Work is ongoing for the upcoming 2.7.0 update. Recently we've finished the re-implementation of Android Auto support which was the major blocker for the next release. We'll likely start a beta cycle to collect feedback in the coming weeks/months. This version of the app will be compatible with Jellyfin 10.10 and newer.
+
+*- [Niels van Velzen](https://github.com/nielsvanvelzen)*
+
+### [Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv)
+
+#### What's New
+
+Two updates to the app went live since our last State of the Fin, versions 0.19.7 and 0.19.8 both fix numerous bugs. Most notably, a bug where our progress bar would be incorrect for some users. That's now fixed!
+
+#### What's Next
+
+Work is still progressing on the next big Android TV release.
+Version 0.20 will have a completely revamped look for the settings and also expands them to allow more customization and tweaking playback options. Work also continues on the new video player, with various features also made available to the current one, like support for SubStation Alpha subtitles and better handling of external apps for video playback.
+
+This version of the app will require Jellyfin server 10.11 or newer. Due to community feedback, we have postponed the release until Jellyfin 12.0 is released. However, the beta versions of the app will likely start earlier.
+
+*- [Niels van Velzen](https://github.com/nielsvanvelzen)*
+
+### [Jellyfin for Desktop](https://github.com/jellyfin/jellyfin-desktop)
+
+#### What's New
+Jellyfin Desktop is being completely rewritten to address several performance, feature, and maintainability issues. Qt and its Chromium-based QtWebEngine have been replaced with Chromium Embedded Framework (CEF) to drastically improve responsiveness. The removal of Qt means we are no longer bound to a dependency that has historically been problematic when maintaining this project (Qt5->6, Qt WebEngine memory leaks). As for the audio/video side of things, we've switched from the legacy libmpv pipeline to the same modern pipeline that standalone mpv uses. This enables both better GPU acceleration (`vo=gpu-next`) and native HDR playback (Wayland/macOS/Windows). CEF and mpv are integrated via platform-native mechanisms that seamlessly overlay CEF on top of the video playback performance of standalone mpv. Long term, this should allow us to combine the functionality of Jellyfin MPV Shim into the Jellyfin Desktop codebase.
+
+Although it's not yet ready for a stable v3.0.0 release, development builds are available in the [project's GitHub](https://github.com/jellyfin/jellyfin-desktop/). I actively welcome any bug reports or feature requests as they are incredibly helpful in prioritizing a sustainable, long-term codebase. To all early testers: thank you!
+
+#### Notable Changes
+- Completely rewritten without Qt/QtWebEngine
+- Uses CEF as the browser engine
+- Reworked audio/video pipeline to use the same as standalone mpv
+- Supports mpv.conf and mpv plugins
+- Linux AppImage support added
+- Windows ARM support added
+
+#### Known Issues
+- Some features found in v1.x and v2.x are missing
+
+#### What's Next
+- Stabilize architecture to allow for better programmatic testing
+- Formal v3.0.0 pre-release
+
+*- [Andrew Rabert](https://github.com/andrewrabert)*
+
+### [Jellyfin for Kodi](https://github.com/jellyfin/jellyfin-kodi)
+
+#### What's New
+
+A couple of long-requested features have been completed in this period along with bug fixes and general cleanup.
+
+#### Notable Changes
+
+- Media Segments are now supported.
+- Quick Connect support has been merged and will be included in a future release.
+
+*- [MCarlton00](https://github.com/mcarlton00)*
+
+### [Jellyfin for Roku](https://github.com/jellyfin/jellyfin-roku)
+
+#### Highlights
+
+- New setting allowing you to change the poster orientation in libraries
+- New settings allowing you to change playback speed
+- Choose between 1 or 5 displayed trickplay images
+- OSD seekbar is now fully functional
+- Custom subtitles now support font color tags
+- Subtitle timing offset now available for custom subtitles
+- Many more direct play profiles added
+- Oh so many bug fixes
+- And so much more!
+
+
+#### What's Next
+
+- More custom subtitle enhancements (bold & italic?!?! 😱 )
+- Default subtitle selection improvements
+- Default audio track selection improvements
+
+*- [1hitsong](https://github.com/1hitsong)*
+
+### [Jellyfin for Tizen](https://github.com/jellyfin/jellyfin-tizen)
+
+#### What's New
+
+The [Tizen Jellyfin client](https://github.com/jellyfin/jellyfin-tizen) for Tizen 6 and newer has been released to the Samsung Tizen Store! Tizen 5 and earlier should still be able to side-load the client.
+
+*- [Eric Stacey](https://github.com/ejstacey)*
+
+### [Jellyfin for Xbox](https://github.com/jellyfin/jellyfin-xbox)
+
+#### What's New
+
+Since the last State of the Fin, Jellyfin for Xbox has seen several new PRs for various fixes and improvements. We also checked off a major item from the previous State of the Fin todo list: Jellyfin for Xbox now supports translations!
+
+#### Notable Changes
+
+- **UI Refresh**: Various UX fixes and improvements throughout the app interface.
+
+- **Log File Upload Dialog**: A new dialog allows uploading any of the last 6 log files directly from within the app.
+
+- **Translation Support**: Jellyfin for Xbox now supports localization!
+
+<img src="https://camo.githubusercontent.com/a73a232f3e00c5a5e5a34c44d91861a687b5876882699e67d6efeb464c4a71b6/68747470733a2f2f7472616e736c6174652e6a656c6c7966696e2e6f72672f7769646765742f6a656c6c7966696e2d666f722d78626f782f6d756c74692d6175746f2e737667" alt="Translation support" style={{maxWidth: '300px', width: '100%'}} />
+
+#### What's Next
+
+A new v0.9.5 release incorporating these changes is coming soon!
+
+*- [Jean-Pierre Bachmann](https://github.com/JPVenson)*
+
+## Jellyfin Labs
+
+### [Swiftfin](https://github.com/jellyfin/Swiftfin)
+
+#### What's New
+
+Swiftfin has had a lot of recent development in preparation for 1.5 and our next tvOS release. A lot of our recent work has been focused on utilizing new SwiftUI improvements to better unify work between iOS and tvOS. There is a lot of effort involved in this but this should help improve our release cadence moving forward.
+
+#### Notable Changes
+
+- Many iOS player bug fixes and additional supplement information & customization.
+- Structural changes to better unify iOS and tvOS development moving forward.
+- Lots of work towards our next [tvOS release](https://github.com/jellyfin/Swiftfin/discussions/1294) including the resolution of some [longstanding and high profile issues](https://github.com/jellyfin/Swiftfin/issues/776)!
+
+#### Known Issues
+
+- In the finaly version of Jellyfin 12.0, Swiftfin tvOS will not be able to authenticate without [enabling legacy authentication](https://gist.github.com/nielsvanvelzen/ea047d9028f676185832e51ffaf12a6f#disabling-deprecated-authorization-methods). This is resolved for iOS/iPadOS and will be resolved in the next tvOS release. _It is **our goal** to have a new tvOS release before 12.0 is out of testing._
+
+#### What's Next
+
+We are working hard on our next release! If you are interested in helping out, please see our [Help Wanted](https://github.com/jellyfin/Swiftfin/discussions/1503) post for details on getting started!
+
+*- [Joe Kribs](https://github.com/JPKribs)*
+
+
+### Other
+
+#### New Clients
+
+Work has started on two new Jellyfin clients!
+
+Currently in the prototype phase is a Jellyfin client for the new **Vega OS** platform from Amazon. This is the operating system used on the newer models of Fire TV Sticks released since 2025. We've seen a lot of requests for this as people buy the devices thinking they can use our Android TV app and end up not finding Jellyfin.
+
+Further into development is our client for **Titan OS**. This smart TV platform is mainly found on Philips televisions. We're currently testing this client and hopefully have some news to share soon!
+
+## Documentation
+
+### [Jellyfin.org](https://github.com/jellyfin/jellyfin.org)
+
+#### What's New
+
+Documentation is always a work in progress but over this period Jellyfin's documentation has seen some notable changes:
+
+- Improved CI to catch common issues and spelling errors
+- A new feature proposal guideline
+- Fish shell support added to the installer commands
+- Cleanup of reverse proxy documentation
+- The LLM policy made its way into the docs
+
+#### Moving Forward
+
+New contributors have been assisting, which has been a tremendous help! Thank you to everyone who has pitched in so far. If you are interested in getting involved, please feel free to create a PR.
+
+*- [BotBlake](https://github.com/BotBlake)*
+
+## Closing Thoughts
+
+While this post isn't full of new announcements, it's worth posting so you know people are still working on things in the background. Jellyfin was originally forked from Emby, however the projects have different goals and directions. For Jellyfin, this includes some very deep rewrites of core code, which takes a lot of time and effort. It is necessary to help the codebase mature for the future of the project. We hope with the extra details given in this blog, which are public but generally not broadcasted, you can appreciate the scope and size of the Jellyfin work, and the people behind it. Thank you for using and supporting Jellyfin!
+
+\- [Eric Stacey](https://github.com/ejstacey)
