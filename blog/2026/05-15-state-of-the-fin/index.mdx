@@ -52,7 +52,9 @@ This PR addresses a number of slow queries in 10.11.x, particularly for folder-b
 
 #### Testing
 
-**Before testing the unstable 12.0 build, please note the following:**
+Before testing the unstable 12.0 build, please note the following:
+
+A full backup of the data directory is strongly recommended before upgrading, as this release includes database changes that prevent rolling back without a full restore.
 
 Please remove all installed repository plugins (anything not built-in) before upgrading. Plugins will likely need time to adapt to the new database changes, so removing them before upgrading and re-adding them afterward for testing is the safest approach.
 
